@@ -21,3 +21,20 @@ document.querySelectorAll('.signPage').forEach((signIn) => {
     item[0].classList.add('caro-selected');
     btns[0].classList.add('span-selected');
 });
+
+const signUp = document.getElementById('signUp');
+const fName = document.getElementById('fName');
+const lName = document.getElementById('lName');
+const emailSignUp = document.getElementById('emailUp');
+const pswordUp = document.getElementById('psWord1');
+const pswordUpConfirm = document.getElementById('psWord2');
+const signUpBtn = document.getElementById('signUpBtn');
+
+let usersStorage = localStorage.getItem('users')
+? JSON.parse(localStorage.getItem('users')) : [];
+
+signUp.addEventListener('submit', (e) => {
+    e.preventDefault();
+    usersStorage.push(fName.value, lName.value, emailSignUp.value, pswordUp.value, pswordUpConfirm.value);
+    localStorage.setItem('users', JSON.stringify(usersStorage));
+})
