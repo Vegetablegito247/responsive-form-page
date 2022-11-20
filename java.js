@@ -38,7 +38,7 @@ document.querySelector('#signUp').addEventListener('submit', (e) => {
     document.querySelector('#signUp').reset();
 
     localStorage.setItem('users', JSON.stringify(users));
-})
+});
 
 // let usersStorage = localStorage.getItem('users')
 // ? JSON.parse(localStorage.getItem('users')) : [];
