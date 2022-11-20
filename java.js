@@ -22,19 +22,35 @@ document.querySelectorAll('.signPage').forEach((signIn) => {
     btns[0].classList.add('span-selected');
 });
 
-const signUp = document.getElementById('signUp');
-const fName = document.getElementById('fName');
-const lName = document.getElementById('lName');
-const emailSignUp = document.getElementById('emailUp');
-const pswordUp = document.getElementById('psWord1');
-const pswordUpConfirm = document.getElementById('psWord2');
-const signUpBtn = document.getElementById('signUpBtn');
-
-let usersStorage = localStorage.getItem('users')
-? JSON.parse(localStorage.getItem('users')) : [];
-
-signUp.addEventListener('submit', (e) => {
+let users = [];
+document.querySelector('#signUp').addEventListener('submit', (e) => {
     e.preventDefault();
-    usersStorage.push(fName.value, lName.value, emailSignUp.value, pswordUp.value, pswordUpConfirm.value);
-    localStorage.setItem('users', JSON.stringify(usersStorage));
+    let user = {
+        fName: document.getElementById('fName').value,
+        lName: document.getElementById('lName').value,
+        emailSignUp: document.getElementById('emailUp').value,
+        pswordUp: document.getElementById('psWord1').value,
+        pswordUpConfirm: document.getElementById('psWord2').value,
+        signUpBtn: document.getElementById('signUpBtn').value
+    };    
+    users.push(user);
+
+    document.querySelector('#signUp').reset();
+
+    localStorage.setItem('users', JSON.stringify(users));
 })
+
+// let usersStorage = localStorage.getItem('users')
+// ? JSON.parse(localStorage.getItem('users')) : [];
+
+// signUp.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     let formData = new FormData(signUp);
+//     console.log(formData);
+
+//     let obj = Object.fromEntries(formData);
+//     console.log(obj);
+
+//     // usersStorage.push(obj);n
+//     localStorage.setItem('users', JSON.stringify(usersStorage));
+// })
